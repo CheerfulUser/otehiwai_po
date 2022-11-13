@@ -32,19 +32,7 @@ def rate_limit(rate,pixsize=0.6,ap_size=5):
     time = (ap_size / pixrate) * 60
     return int(time)
 
-def make_obs_entry(exptime,filt,repeats,obj,ra,dec,propid,priority=1,exptype='object'):
-    obs = {
-        "count": repeats,
-        "expType": exptype,
-        "object": obj,
-        "filter": filt,
-        "expTime": exptime,
-        "ra": ra,
-        "dec": dec,
-        "propid": propid,
-        "priority":int(priority)
-        }
-    return obs
+
 
 def format_coord(ra,dec):
     if type(ra) == str:
@@ -81,17 +69,18 @@ def make_look_entries(look,total_time=0.5*60**2,readout=40,filters=['R']):
     return obs    
             
 
-def look_priority(look,names=None,magrange=[['22-19',0],['19-17',1],['17-15',2],['15-12',3]]):
+def look_priority(look,names=None,magrange=[['22-19',2],['19-17',3],['17-15',4],['15-12',5]]):
     looks = deepcopy(look['active'])
-    looks['priority'] = int(2)
+    looks['priority'] = int(3)
     if magrange is not None:
         for i in range(len(magrange)):
             f,b = magrange[i][0].split('-')
             b = float(b); f = float(f)
-            if b < f:
+            if b > f:
                 temp = deepcopy(f)
                 f = b
                 b = temp
+            print(f,b)
             ind = (looks['V Mag.'].values < f) & (looks['V Mag.'].values > b)
             looks['priority'].iloc[ind] = int(magrange[i][1])
 
@@ -107,7 +96,7 @@ def look_priority(look,names=None,magrange=[['22-19',0],['19-17',1],['17-15',2],
 
 
 
-def make_look_list(name_priority=[['81P',0],['73P',0],['UN271',0]]):
+def make_look_list(name_priority=[['81P',1],['73P',1],['UN271',1]]):
     date = get_today()
 
     save_path = package_directory + 'targets/' + date

@@ -20,3 +20,17 @@ def save_targs(target_list,name):
     import json
     with open(name, 'w') as fout:
         json.dump(target_list, fout,indent=2)
+
+def make_obs_entry(exptime,filt,repeats,obj,ra,dec,propid,priority=1,exptype='object'):
+    obs = {
+        "count": repeats,
+        "expType": exptype,
+        "object": obj,
+        "filter": filt,
+        "expTime": exptime,
+        "ra": ra,
+        "dec": dec,
+        "propid": propid,
+        "priority":int(priority)
+        }
+    return obs
