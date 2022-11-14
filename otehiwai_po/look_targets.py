@@ -42,6 +42,14 @@ def format_coord(ra,dec):
     return ra,dec
 
 
+def round_look_exposures(exptime):
+    allowed = np.array([20,30,60,120,300])
+    diff = abs(allowed - exptime)
+    ind = np.argmin(diff)
+    return allowed[ind]
+
+
+
 def make_look_entries(look,total_time=0.5*60**2,readout=40,filters=['R']):
     obs = []
     key = list(look.keys())
@@ -59,6 +67,7 @@ def make_look_entries(look,total_time=0.5*60**2,readout=40,filters=['R']):
                 m = '!!! exposure time is too long for tracking!!! \n Rescaling: {}s -> {}s'.format(exptime,500)
                 print(m)
                 exptime = 300
+            exptime = int(round_look_exposures(exptime))
             repeats = int(total_time / (exptime + readout))
             ra,dec = format_coord(l['R.A.'],l['Dec.'])
             name = l['Target Name'].replace(' ','_').replace('/','') + '_' + '2022S-01'
