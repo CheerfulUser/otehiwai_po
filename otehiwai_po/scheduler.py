@@ -26,7 +26,7 @@ def make_target(ra,dec,name):
     targ = FixedTarget(coord=c,name=name)
     return targ
 
-def make_block(obj,priority=0,readout=32):
+def make_block(obj,priority=0,readout=80):
 
     read_out = readout * u.second
 
