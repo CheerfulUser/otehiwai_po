@@ -40,7 +40,7 @@ def make_debass_entries(debass,exptime=300,readout=40,filters=['R','V']):
 
 def debas_priority(debass,names=None):
     
-    debass['priority'] = int(1)
+    debass['priority'] = int(2)
 
     if names is not None:
         for i in range(len(names)):

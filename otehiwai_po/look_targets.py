@@ -67,18 +67,24 @@ def make_look_entries(look,total_time=0.5*60**2,readout=40,filters=['R']):
                 m = '!!! exposure time is too long for tracking!!! \n Rescaling: {}s -> {}s'.format(exptime,500)
                 print(m)
                 exptime = 300
-            exptime = int(round_look_exposures(exptime))
-            repeats = int(total_time / (exptime + readout))
             ra,dec = format_coord(l['R.A.'],l['Dec.'])
             name = l['Target Name'].replace(' ','_').replace('/','') + '_' + '2022S-01'
             priority = l['priority']
+            if priority == 1:
+                total_time = 30*60
+            else:
+                total_time = 10*60
+            
+            exptime = int(round_look_exposures(exptime))
+
             for f in filters:
+                repeats = int(total_time / (exptime + readout))
                 ob = make_obs_entry(exptime,f,repeats,name,ra,dec,propid='2022S-01',priority=priority)
                 obs += [ob]
     return obs    
             
 
-def look_priority(look,names=None,magrange=[['22-19',2],['19-17',3],['17-15',4],['15-12',5]]):
+def look_priority(look,names=None,magrange=[['22-19',3],['19-17',4],['17-15',5],['15-12',6]]):
     looks = deepcopy(look['active'])
     looks['priority'] = int(3)
     if magrange is not None:

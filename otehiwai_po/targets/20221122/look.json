@@ -1,69 +1,69 @@
 [
   {
-    "count": 11,
+    "count": 3,
     "expType": "object",
     "object": "2003_CC22_2022S-01",
     "filter": "R",
     "expTime": 120,
-    "ra": 155.49937499999996,
-    "dec": 12.09888888888889,
+    "ra": 155.57566666666665,
+    "dec": 12.081388888888888,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 5,
+    "count": 1,
     "expType": "object",
     "object": "445P_2022S-01",
     "filter": "R",
     "expTime": 300,
-    "ra": 349.316,
-    "dec": -5.924777777777778,
+    "ra": 349.4133333333333,
+    "dec": -5.881222222222223,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 11,
+    "count": 3,
     "expType": "object",
     "object": "C2022_R6_2022S-01",
     "filter": "R",
     "expTime": 120,
-    "ra": 51.16537499999999,
-    "dec": -43.129777777777775,
+    "ra": 51.11874999999999,
+    "dec": -43.13188888888889,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 25,
+    "count": 8,
     "expType": "object",
     "object": "157P_2022S-01",
     "filter": "R",
     "expTime": 30,
-    "ra": 158.89929166666667,
-    "dec": 4.588861111111111,
+    "ra": 159.09904166666664,
+    "dec": 4.433083333333333,
     "propid": "2022S-01",
-    "priority": 3
+    "priority": 4
   },
   {
-    "count": 18,
+    "count": 6,
     "expType": "object",
     "object": "2022_QE78_2022S-01",
     "filter": "R",
     "expTime": 60,
-    "ra": 53.319083333333325,
-    "dec": -21.566916666666668,
+    "ra": 53.27570833333332,
+    "dec": -21.566666666666666,
     "propid": "2022S-01",
-    "priority": 3
+    "priority": 4
   },
   {
-    "count": 30,
+    "count": 10,
     "expType": "object",
     "object": "285P_2022S-01",
     "filter": "R",
     "expTime": 20,
-    "ra": 306.37491666666665,
-    "dec": -7.5209166666666665,
+    "ra": 306.68412499999994,
+    "dec": -7.568361111111111,
     "propid": "2022S-01",
-    "priority": 4
+    "priority": 5
   },
   {
     "count": 18,
@@ -71,8 +71,8 @@
     "object": "73P-BV_2022S-01",
     "filter": "R",
     "expTime": 60,
-    "ra": 320.0775416666666,
-    "dec": -27.714805555555554,
+    "ra": 320.5337083333333,
+    "dec": -27.54116666666667,
     "propid": "2022S-01",
     "priority": 1
   },
@@ -82,8 +82,8 @@
     "object": "73P-BU_2022S-01",
     "filter": "R",
     "expTime": 60,
-    "ra": 322.19387499999993,
-    "dec": -27.204916666666666,
+    "ra": 322.6504166666667,
+    "dec": -27.021277777777776,
     "propid": "2022S-01",
     "priority": 1
   },
@@ -93,43 +93,43 @@
     "object": "73P-JD001_2022S-01",
     "filter": "R",
     "expTime": 30,
-    "ra": 307.3004583333333,
-    "dec": -30.44997222222222,
+    "ra": 307.9002083333333,
+    "dec": -30.289416666666668,
     "propid": "2022S-01",
     "priority": 1
   },
   {
-    "count": 11,
+    "count": 3,
     "expType": "object",
     "object": "395P_2022S-01",
     "filter": "R",
     "expTime": 120,
-    "ra": 344.95687499999997,
-    "dec": -3.616722222222222,
+    "ra": 344.993125,
+    "dec": -3.6099444444444444,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 11,
+    "count": 3,
     "expType": "object",
     "object": "C2022_F1_2022S-01",
     "filter": "R",
     "expTime": 120,
-    "ra": 295.2285,
-    "dec": -71.19830555555556,
+    "ra": 295.4907916666666,
+    "dec": -71.11872222222222,
     "propid": "2022S-01",
-    "priority": 3
+    "priority": 4
   },
   {
-    "count": 25,
+    "count": 8,
     "expType": "object",
     "object": "C2022_E2_2022S-01",
     "filter": "R",
     "expTime": 30,
-    "ra": 158.60574999999997,
-    "dec": -19.558027777777777,
+    "ra": 158.60087499999997,
+    "dec": -19.573166666666665,
     "propid": "2022S-01",
-    "priority": 3
+    "priority": 4
   },
   {
     "count": 30,
@@ -137,142 +137,142 @@
     "object": "81P_2022S-01",
     "filter": "R",
     "expTime": 20,
-    "ra": 189.9225833333333,
-    "dec": -3.036388888888889,
+    "ra": 190.27866666666665,
+    "dec": -3.1733333333333333,
     "propid": "2022S-01",
     "priority": 1
   },
   {
-    "count": 18,
+    "count": 6,
     "expType": "object",
     "object": "C2022_A3_2022S-01",
     "filter": "R",
     "expTime": 60,
-    "ra": 158.57187499999998,
-    "dec": 6.362111111111111,
+    "ra": 158.56937499999998,
+    "dec": 6.288138888888889,
     "propid": "2022S-01",
-    "priority": 3
+    "priority": 4
   },
   {
-    "count": 11,
+    "count": 3,
     "expType": "object",
     "object": "A2021_X2_2022S-01",
     "filter": "R",
     "expTime": 120,
-    "ra": 8.262833333333333,
-    "dec": -35.70866666666667,
+    "ra": 8.044208333333332,
+    "dec": -35.74636111111111,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 25,
+    "count": 8,
     "expType": "object",
     "object": "C2021_G2_2022S-01",
     "filter": "R",
     "expTime": 30,
-    "ra": 138.34579166666666,
-    "dec": -34.63547222222222,
+    "ra": 138.36816666666664,
+    "dec": -34.69302777777777,
     "propid": "2022S-01",
-    "priority": 4
+    "priority": 5
   },
   {
-    "count": 5,
+    "count": 1,
     "expType": "object",
     "object": "97P_2022S-01",
     "filter": "R",
     "expTime": 300,
-    "ra": 139.33179166666665,
-    "dec": -2.174722222222222,
+    "ra": 139.38341666666665,
+    "dec": -2.2183333333333333,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 30,
+    "count": 10,
     "expType": "object",
     "object": "C2021_T4_2022S-01",
     "filter": "R",
     "expTime": 20,
-    "ra": 23.415416666666665,
-    "dec": -10.846472222222223,
+    "ra": 23.174249999999994,
+    "dec": -10.923777777777778,
     "propid": "2022S-01",
-    "priority": 4
+    "priority": 5
   },
   {
-    "count": 5,
+    "count": 1,
     "expType": "object",
     "object": "C2021_T2_2022S-01",
     "filter": "R",
     "expTime": 300,
-    "ra": 225.50391666666664,
-    "dec": -20.542361111111113,
+    "ra": 225.61999999999995,
+    "dec": -20.502555555555556,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 11,
+    "count": 3,
     "expType": "object",
     "object": "382P_2022S-01",
     "filter": "R",
     "expTime": 120,
-    "ra": 8.447916666666666,
-    "dec": -0.6692222222222222,
+    "ra": 8.43675,
+    "dec": -0.676861111111111,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 30,
+    "count": 10,
     "expType": "object",
     "object": "C2021_S3_2022S-01",
     "filter": "R",
     "expTime": 20,
-    "ra": 93.01133333333333,
-    "dec": -35.35875,
+    "ra": 92.94408333333332,
+    "dec": -35.42766666666667,
     "propid": "2022S-01",
-    "priority": 4
+    "priority": 5
   },
   {
-    "count": 5,
+    "count": 1,
     "expType": "object",
     "object": "19P_2022S-01",
     "filter": "R",
     "expTime": 300,
-    "ra": 207.7704583333333,
-    "dec": 12.318,
+    "ra": 207.9259583333333,
+    "dec": 12.276333333333334,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 5,
+    "count": 1,
     "expType": "object",
     "object": "P2021_R1_2022S-01",
     "filter": "R",
     "expTime": 300,
-    "ra": 34.55029166666666,
-    "dec": 6.928916666666667,
+    "ra": 34.50308333333333,
+    "dec": 6.916805555555555,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 30,
+    "count": 10,
     "expType": "object",
     "object": "C2021_P4_2022S-01",
     "filter": "R",
     "expTime": 20,
-    "ra": 226.9367083333333,
-    "dec": -57.700250000000004,
+    "ra": 227.46554166666664,
+    "dec": -57.86666666666667,
     "propid": "2022S-01",
-    "priority": 4
+    "priority": 5
   },
   {
-    "count": 5,
+    "count": 1,
     "expType": "object",
     "object": "386968_2022S-01",
     "filter": "R",
     "expTime": 300,
-    "ra": 239.95779166666662,
-    "dec": -21.76983333333333,
+    "ra": 240.00525,
+    "dec": -21.779055555555555,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
     "count": 11,
@@ -280,208 +280,208 @@
     "object": "C2014_UN271_2022S-01",
     "filter": "R",
     "expTime": 120,
-    "ra": 40.07875,
-    "dec": -61.47163888888889,
+    "ra": 40.03274999999999,
+    "dec": -61.471611111111116,
     "propid": "2022S-01",
     "priority": 1
   },
   {
-    "count": 5,
+    "count": 1,
     "expType": "object",
     "object": "C2021_K2_2022S-01",
     "filter": "R",
     "expTime": 300,
-    "ra": 271.34849999999994,
-    "dec": -0.25527777777777777,
+    "ra": 271.40216666666663,
+    "dec": -0.2326666666666667,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 5,
+    "count": 1,
     "expType": "object",
     "object": "C2021_K3_2022S-01",
     "filter": "R",
     "expTime": 300,
-    "ra": 262.42604166666666,
-    "dec": -43.72175,
+    "ra": 262.47729166666664,
+    "dec": -43.74069444444444,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 11,
+    "count": 3,
     "expType": "object",
     "object": "99P_2022S-01",
     "filter": "R",
     "expTime": 120,
-    "ra": 225.84029166666664,
-    "dec": -18.468166666666665,
+    "ra": 225.97341666666665,
+    "dec": -18.508222222222223,
     "propid": "2022S-01",
-    "priority": 3
+    "priority": 4
   },
   {
-    "count": 25,
+    "count": 8,
     "expType": "object",
     "object": "22P_2022S-01",
     "filter": "R",
     "expTime": 30,
-    "ra": 11.625208333333331,
-    "dec": -2.1077500000000002,
+    "ra": 11.615083333333333,
+    "dec": -2.0909166666666668,
     "propid": "2022S-01",
-    "priority": 3
+    "priority": 4
   },
   {
-    "count": 5,
+    "count": 1,
     "expType": "object",
     "object": "7P_2022S-01",
     "filter": "R",
     "expTime": 300,
-    "ra": 57.381874999999994,
-    "dec": 1.74025,
+    "ra": 57.27724999999999,
+    "dec": 1.7363611111111112,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 30,
+    "count": 10,
     "expType": "object",
     "object": "C2021_E3_2022S-01",
     "filter": "R",
     "expTime": 20,
-    "ra": 148.20466666666667,
-    "dec": -43.07197222222223,
+    "ra": 148.05262499999998,
+    "dec": -43.11108333333333,
     "propid": "2022S-01",
-    "priority": 4
+    "priority": 5
   },
   {
-    "count": 25,
+    "count": 8,
     "expType": "object",
     "object": "C2021_C5_2022S-01",
     "filter": "R",
     "expTime": 30,
-    "ra": 195.65754166666662,
-    "dec": -48.511722222222225,
+    "ra": 195.90216666666666,
+    "dec": -48.66325,
     "propid": "2022S-01",
     "priority": 3
   },
   {
-    "count": 11,
+    "count": 3,
     "expType": "object",
     "object": "C2021_A9_2022S-01",
     "filter": "R",
     "expTime": 120,
-    "ra": 135.83054166666665,
-    "dec": 13.602055555555555,
+    "ra": 135.78066666666666,
+    "dec": 13.600388888888888,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 11,
+    "count": 3,
     "expType": "object",
     "object": "C2021_A1_2022S-01",
     "filter": "R",
     "expTime": 120,
-    "ra": 250.250375,
-    "dec": -20.756666666666668,
+    "ra": 250.33529166666662,
+    "dec": -20.751472222222223,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 5,
+    "count": 1,
     "expType": "object",
     "object": "191P_2022S-01",
     "filter": "R",
     "expTime": 300,
-    "ra": 167.84529166666664,
-    "dec": 12.546916666666666,
+    "ra": 167.92433333333332,
+    "dec": 12.533222222222223,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 5,
+    "count": 1,
     "expType": "object",
     "object": "C2020_T2_2022S-01",
     "filter": "R",
     "expTime": 300,
-    "ra": 339.08441666666664,
-    "dec": -38.23802777777778,
+    "ra": 339.1196249999999,
+    "dec": -38.18686111111111,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 30,
+    "count": 10,
     "expType": "object",
     "object": "C2020_R7_2022S-01",
     "filter": "R",
     "expTime": 20,
-    "ra": 258.66866666666664,
-    "dec": -19.05452777777778,
+    "ra": 258.76129166666664,
+    "dec": -18.97,
     "propid": "2022S-01",
-    "priority": 4
+    "priority": 5
   },
   {
-    "count": 11,
+    "count": 3,
     "expType": "object",
     "object": "A2019_U5_2022S-01",
     "filter": "R",
     "expTime": 120,
-    "ra": 207.19004166666664,
-    "dec": 8.195,
+    "ra": 207.22329166666665,
+    "dec": 8.128027777777778,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 30,
+    "count": 10,
     "expType": "object",
     "object": "C2019_L3_2022S-01",
     "filter": "R",
     "expTime": 20,
-    "ra": 149.68941666666666,
-    "dec": -22.606194444444444,
+    "ra": 149.71837499999998,
+    "dec": -22.718999999999998,
     "propid": "2022S-01",
-    "priority": 5
+    "priority": 6
   },
   {
-    "count": 25,
+    "count": 8,
     "expType": "object",
     "object": "C2019_F1_2022S-01",
     "filter": "R",
     "expTime": 30,
-    "ra": 20.735916666666665,
-    "dec": -24.111722222222223,
+    "ra": 20.674833333333332,
+    "dec": -24.056444444444445,
     "propid": "2022S-01",
-    "priority": 3
+    "priority": 4
   },
   {
-    "count": 18,
+    "count": 6,
     "expType": "object",
     "object": "C2019_E3_2022S-01",
     "filter": "R",
     "expTime": 60,
-    "ra": 120.0445,
-    "dec": -73.66341666666668,
+    "ra": 119.90108333333332,
+    "dec": -73.71866666666666,
     "propid": "2022S-01",
-    "priority": 3
+    "priority": 4
   },
   {
-    "count": 11,
+    "count": 3,
     "expType": "object",
     "object": "2060_2022S-01",
     "filter": "R",
     "expTime": 120,
-    "ra": 10.37,
-    "dec": 6.497916666666667,
+    "ra": 10.357375,
+    "dec": 6.491194444444445,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   },
   {
-    "count": 30,
+    "count": 10,
     "expType": "object",
     "object": "C2017_K2_2022S-01",
     "filter": "R",
     "expTime": 20,
-    "ra": 252.3781666666666,
-    "dec": -49.72219444444445,
+    "ra": 252.60008333333326,
+    "dec": -49.906416666666665,
     "propid": "2022S-01",
-    "priority": 5
+    "priority": 6
   },
   {
     "count": 30,
@@ -489,20 +489,20 @@
     "object": "73P_2022S-01",
     "filter": "R",
     "expTime": 20,
-    "ra": 319.6470833333333,
-    "dec": -27.81463888888889,
+    "ra": 320.11045833333327,
+    "dec": -27.640638888888887,
     "propid": "2022S-01",
     "priority": 1
   },
   {
-    "count": 5,
+    "count": 1,
     "expType": "object",
     "object": "67P_2022S-01",
     "filter": "R",
     "expTime": 300,
-    "ra": 201.29720833333332,
-    "dec": -7.5985555555555555,
+    "ra": 201.41874999999996,
+    "dec": -7.647888888888889,
     "propid": "2022S-01",
-    "priority": 2
+    "priority": 3
   }
 ]
