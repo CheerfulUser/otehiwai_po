@@ -71,7 +71,7 @@ def make_look_entries(look,total_time=0.5*60**2,readout=40,filters=['R']):
             name = l['Target Name'].replace(' ','_').replace('/','') + '_' + '2022S-01'
             priority = l['priority']
             if priority == 1:
-                total_time = 30*60
+                total_time = 60*60
             else:
                 total_time = 10*60
             
@@ -84,12 +84,12 @@ def make_look_entries(look,total_time=0.5*60**2,readout=40,filters=['R']):
     return obs    
             
 
-def look_priority(look,names=None,magrange=[['22-19',3],['19-17',4],['17-15',5],['15-12',6]]):
+def look_priority(look,names=None,mag_priority=[['22-19',3],['19-17',4],['17-15',5],['15-12',6]]):
     looks = deepcopy(look['active'])
     looks['priority'] = int(3)
-    if magrange is not None:
-        for i in range(len(magrange)):
-            f,b = magrange[i][0].split('-')
+    if mag_priority is not None:
+        for i in range(len(mag_priority)):
+            f,b = mag_priority[i][0].split('-')
             b = float(b); f = float(f)
             if b > f:
                 temp = deepcopy(f)
@@ -97,7 +97,7 @@ def look_priority(look,names=None,magrange=[['22-19',3],['19-17',4],['17-15',5],
                 b = temp
             print(f,b)
             ind = (looks['V Mag.'].values < f) & (looks['V Mag.'].values > b)
-            looks['priority'].iloc[ind] = int(magrange[i][1])
+            looks['priority'].iloc[ind] = int(mag_priority[i][1])
 
 
     if names is not None:
@@ -111,7 +111,10 @@ def look_priority(look,names=None,magrange=[['22-19',3],['19-17',4],['17-15',5],
 
 
 
-def make_look_list(name_priority=[['81P',1],['73P',1],['UN271',1]]):
+def make_look_list(name_priority,mag_priority):
+    """
+    Generate the target json target file for active LOOK targets. 
+    """
     date = get_today()
 
     save_path = package_directory + 'targets/' + date
@@ -119,7 +122,7 @@ def make_look_list(name_priority=[['81P',1],['73P',1],['UN271',1]]):
     make_dir(save_path)
 
     look = scrub_look_targets()
-    look = look_priority(look,names=name_priority)
+    look = look_priority(look,names=name_priority,mag_priority=mag_priority)
     looks = make_look_entries(look)
     save_targs(looks,save_path + '/look.json')
 
@@ -127,4 +130,4 @@ def make_look_list(name_priority=[['81P',1],['73P',1],['UN271',1]]):
 
 
 if __name__ == '__main__':
-    make_look_list()
+    make_look_list(name_priority=[['81P',1],['73P',1],['UN271',1]],mag_priority=[['22-19',3],['19-17',4],['17-15',5],['15-12',6]])
