@@ -48,9 +48,14 @@ def round_look_exposures(exptime):
     ind = np.argmin(diff)
     return allowed[ind]
 
+def priority_time(priority):
+    if priority > 3:
+        total_time = 30*60
+    else:
+        total_time = 5*60
+    return total_time
 
-
-def make_look_entries(look,total_time=0.5*60**2,readout=40,filters=['R']):
+def make_look_entries(look,readout=40,filters=['R']):
     obs = []
     key = list(look.keys())
     for k in key:
@@ -68,13 +73,10 @@ def make_look_entries(look,total_time=0.5*60**2,readout=40,filters=['R']):
                 print(m)
                 exptime = 300
             ra,dec = format_coord(l['R.A.'],l['Dec.'])
-            name = l['Target Name'].replace(' ','_').replace('/','') + '_' + '2022S-01'
+            name = l['Target Name'].replace(' ','_').replace('/','') + '_22S01'
             priority = l['priority']
-            if priority == 1:
-                total_time = 60*60
-            else:
-                total_time = 10*60
-            
+            total_time = priority_time(priority)
+                    
             exptime = int(round_look_exposures(exptime))
 
             for f in filters:

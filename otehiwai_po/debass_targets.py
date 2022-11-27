@@ -30,7 +30,7 @@ def make_debass_entries(debass,exptime=300,readout=40,filters=['R','V']):
         repeats = 1
         ra = l.RA
         dec = l.DEC
-        name = l['snid'] + '_2022S-05'
+        name = l['snid'] + '_22S05'
         priority = l['priority']
         for f in filters:
             ob = make_obs_entry(exptime,f,repeats,name,ra,dec,propid='2022S-05',priority=priority)
