@@ -120,9 +120,78 @@ def make_schedule(date=None,telescope='moa'):
     make_dir(save_path)
 
     table = table.to_pandas()
-    table.to_csv(save_path + 'schedule.csv',index=False)
+
+    schedule = block_schedule(table,date=date)
+
+
+    schedule.to_csv(save_path + 'schedule.csv',index=False)
 
     make_alt_plot(priority_schedule,save_path)
+
+def split_coords(ra,dec):
+    hr = ra.split('h')[0]
+    hmin = ra.split('h')[-1].split('m')[0]
+    hsec = int(float(ra.split('m')[-1].split('s')[0]))
+
+    deg = dec.split('d')[0]
+    dmin = dec.split('d')[-1].split('m')[0]
+    dsec = int(float(dec.split('m')[-1].split('s')[0]))
+
+    return hr, hmin, hsec, deg, dmin, dsec
+
+def block_schedule(schedule,date=None):
+    if date is None:
+        date = get_today()
+    date = str(date)
+    save_path = package_directory + 'blocks/' + date + '/'
+    make_dir(save_path)
+
+    t = []
+    for i in range(len(schedule)):
+        t += [Time(schedule['start time (UTC)'].values[i]).jd]
+
+    start = 0
+    blocks = []
+    schedule['block'] = 0
+    b = 1
+    while start < len(t):
+        tt = t - t[start]
+        tt[tt<=0] = 1e6
+        ind = np.argmin(abs(tt - 1.05/24))
+        if len(schedule.iloc[ind:]) < 2:
+            ind = len(schedule)
+        blocks += [schedule.iloc[start:ind].reset_index()]
+        schedule['block'].iloc[start:ind] = b
+
+        start = ind
+        b += 1
+        
+    for bind in range(len(blocks)):
+        b = blocks[bind]
+        b = b.drop(np.where(b.target.values == 'TransitionBlock')[0])
+
+        un2 = 0; un3 = 0
+        automate = ''
+        for i in range(len(b)):
+            entry = b.iloc[i]
+            name = entry.target
+            name = name.replace(' ','')
+            #if len(name) > 16:
+            #    n1, n2 = name.split('_22S')
+            #    name = n1[:len(name) - 6] + '_22S' + n2
+            #    print('!!! renaming{} to {}'.format(entry.target,name))
+            exptime = int(entry['exptime (s)'])
+            filt = entry['configuration']['filter']
+            hr, hmin, hsec, deg, dmin, dsec = split_coords(entry.ra,entry.dec)
+            repeats = entry.repeats
+            line = f'{name} {exptime} {filt} {hr:0>2} {hmin:0>2} {hsec:0>2} {deg[0]}{deg[1:]:0>2} {dmin:0>2} {dsec:0>2} 2000.0 {repeats} {un2} {un3}\n'
+            automate += line
+        automate = automate[:-1]
+        with open(f'{save_path}UC_block_{bind+1}.lst', 'w') as f:
+            f.write(automate)
+    
+    return schedule
+
 
 
 if __name__ == '__main__':
