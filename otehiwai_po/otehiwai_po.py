@@ -4,7 +4,6 @@ from swope_targets import make_swope_list
 from scheduler import make_schedule
 import os
 
-
 if __name__ == '__main__':
     print('!!! pulling from Git !!!')
     os.system('git pull')
