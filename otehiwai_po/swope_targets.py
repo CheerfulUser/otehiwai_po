@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Nov 29 04:47:09 2022
+
+@author: porri
+"""
+
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -5,22 +13,39 @@ from astropy.coordinates import SkyCoord
 import astropy.units as u
 from copy import deepcopy
 import os
-from utils import *
+from utilly import *
+import requests
 
 
 package_directory = os.path.dirname(os.path.abspath(__file__)) + '/'
 
-def get_target_list():
-    call = 'wget "https://docs.google.com/spreadsheets/d/1UFuei-xAv3a5rdKUBIArvL8RI1Vp9Hk54JiDwtYpYnA/export?format=csv&gid=0" -O "{}swope.csv"'.format(package_directory)
+# def get_target_list():
+#     call = 'wget "https://docs.google.com/spreadsheets/d/1UFuei-xAv3a5rdKUBIArvL8RI1Vp9Hk54JiDwtYpYnA/export?format=csv&gid=0" -O "{}swope.csv"'.format(package_directory)
 
-    os.system(call)
+#     os.system(call)
+
+#     df = pd.read_csv('swope.csv')
+#     df = df.rename(columns={'Unnamed: 2':'name'})
+#     df = df.dropna(how='all')
+
+#     call = 'rm -rf {}swope.csv'.format(package_directory)
+#     os.system(call)
+#     return df
+
+def get_target_list():
+    # call = 'wget "https://docs.google.com/spreadsheets/d/1UFuei-xAv3a5rdKUBIArvL8RI1Vp9Hk54JiDwtYpYnA/export?format=csv&gid=0" -O "{}swope.csv"'.format(package_directory)
+    
+    URL = "https://docs.google.com/spreadsheets/d/1UFuei-xAv3a5rdKUBIArvL8RI1Vp9Hk54JiDwtYpYnA/export?format=csv&gid=0"
+    
+    test = requests.get(URL)
+    open('swope.csv', 'wb').write(test.content)
 
     df = pd.read_csv('swope.csv')
     df = df.rename(columns={'Unnamed: 2':'name'})
     df = df.dropna(how='all')
 
-    call = 'rm -rf {}swope.csv'.format(package_directory)
-    os.system(call)
+    # call = 'rm -rf {}debass.csv'.format(package_directory)
+    # os.system(call)
     return df
 
 def sort_targets(sn):
@@ -51,7 +76,7 @@ def make_swope_entries(df,priority,exptime=180,readout=40,filters=['V']):
 def make_swope_list():
     date = get_today()
 
-    save_path = package_directory + 'targets/' + date
+    save_path = package_directory + 'targets\\' + date
 
     make_dir(save_path)
     df = get_target_list()

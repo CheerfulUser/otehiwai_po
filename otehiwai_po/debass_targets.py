@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Nov 29 04:44:52 2022
+
+@author: porri
+"""
+
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -5,21 +13,26 @@ from astropy.coordinates import SkyCoord
 import astropy.units as u
 from copy import deepcopy
 import os
-from utils import *
+from utilly import *
+import requests
 
 package_directory = os.path.dirname(os.path.abspath(__file__)) + '/'
 
 def get_target_list():
-    call = 'wget "https://docs.google.com/spreadsheets/d/1JPIAXjcy-maVeNMkImRHFnhfoo2ulJQzHkCJOL0AbKs/export?format=csv&gid=0" -O "{}debass.csv"'.format(package_directory)
+    # call = 'wget "https://docs.google.com/spreadsheets/d/1JPIAXjcy-maVeNMkImRHFnhfoo2ulJQzHkCJOL0AbKs/export?format=csv&gid=0" -O "{}debass.csv"'.format(package_directory)
 
-    os.system(call)
+    #os.system(call)
+    URL = "https://docs.google.com/spreadsheets/d/1JPIAXjcy-maVeNMkImRHFnhfoo2ulJQzHkCJOL0AbKs/export?format=csv&gid=0"
+    
+    test = requests.get(URL)
+    open('debass.csv', 'wb').write(test.content)
 
     df = pd.read_csv('debass.csv')
     follow_ind = df['Following?'].values == 'YES'
     df = df.iloc[follow_ind]
 
-    call = 'rm -rf {}debass.csv'.format(package_directory)
-    os.system(call)
+    # call = 'rm -rf {}debass.csv'.format(package_directory)
+    # os.system(call)
     return df
 
 
@@ -55,7 +68,7 @@ def debas_priority(debass,names=None):
 def make_debass_list(name_priority=None):
     date = get_today()
 
-    save_path = package_directory + 'targets/' + date
+    save_path = package_directory + 'targets\\' + date
 
     make_dir(save_path)
 
