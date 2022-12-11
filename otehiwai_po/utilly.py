@@ -42,3 +42,5 @@ def make_obs_entry(exptime,filt,repeats,obj,ra,dec,propid,priority=1,exptype='ob
         "priority":int(priority)
         }
     return obs
+
+# print(get_today())
