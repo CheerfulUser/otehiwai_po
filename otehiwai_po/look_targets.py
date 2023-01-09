@@ -5,7 +5,7 @@ from astropy.coordinates import SkyCoord
 import astropy.units as u
 from copy import deepcopy
 import os
-from utils import *
+from utilly import *
 
 
 package_directory = os.path.dirname(os.path.abspath(__file__)) + '/'
@@ -118,6 +118,8 @@ def make_look_list(name_priority,mag_priority):
     Generate the target json target file for active LOOK targets. 
     """
     date = get_today()
+    date = str(date)
+    print('ZAC LOOK', date)
 
     save_path = package_directory + 'targets/' + date
 

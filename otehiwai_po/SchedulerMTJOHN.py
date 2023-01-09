@@ -76,10 +76,12 @@ def make_alt_plot(priority_schedule,save_path):
     warnings.filterwarnings("ignore")
 
     from astroplan.plots import plot_schedule_airmass
+    # from astroplan.plots import light_style_sheet
     import matplotlib.pyplot as plt
 
     # plot the schedule with the airmass of the targets
     plt.figure(figsize = (14,6))
+    
     plot_schedule_airmass(priority_schedule,show_night='True',use_local_tz=True)
     plt.legend(loc = "upper right")
     plt.savefig(save_path+'alt_plot.pdf')
@@ -89,6 +91,7 @@ def make_schedule(date,telescope):
     if date is None:
         date = get_today()
     date = str(date)
+    print('ZAC:', date)
     
     print(package_directory + date)
     targets = glob(package_directory + 'targets\\' + date + '\\*.json' )
