@@ -119,7 +119,6 @@ def make_look_list(name_priority,mag_priority):
     """
     date = get_today()
     date = str(date)
-    print('ZAC LOOK', date)
 
     save_path = package_directory + 'targets/' + date
 
