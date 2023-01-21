@@ -68,7 +68,7 @@ def debas_priority(debass,names=None):
 def make_debass_list(name_priority=None):
     date = get_today()
 
-    save_path = package_directory + 'targets\\' + date
+    save_path = package_directory + 'targets/' + date
 
     make_dir(save_path)
 

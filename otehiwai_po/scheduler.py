@@ -71,7 +71,7 @@ def make_schedule(date=None,telescope='moa'):
         date = get_today()
     date = str(date)
     
-    print(package_directory + date)
+    print('!!!! ', package_directory + 'targets/' + date + '/*.json')
     targets = glob(package_directory + 'targets/' + date + '/*.json' )
     blocks = []
     print(targets)

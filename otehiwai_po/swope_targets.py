@@ -76,7 +76,7 @@ def make_swope_entries(df,priority,exptime=180,readout=40,filters=['V']):
 def make_swope_list():
     date = get_today()
 
-    save_path = package_directory + 'targets\\' + date
+    save_path = package_directory + 'targets/' + date
 
     make_dir(save_path)
     df = get_target_list()

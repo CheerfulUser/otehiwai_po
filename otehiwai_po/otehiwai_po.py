@@ -20,7 +20,7 @@ if __name__ == '__main__':
     # T = 'moa'
     
     make_look_list(name_priority=[['81P',1],['73P',1],['UN271',1]],mag_priority=[['22-19',3],['19-17',4],['17-15',5],['15-12',6]])
-    make_debass_list()
+    #make_debass_list()
     make_swope_list()
     # for T in Tele:
     make_schedule(date, telescope = 'moa')

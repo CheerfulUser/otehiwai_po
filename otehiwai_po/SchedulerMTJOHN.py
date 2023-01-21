@@ -27,7 +27,7 @@ import json
 from utilly import *
 # from datetime import date
 import os
-package_directory = os.path.dirname(os.path.abspath(__file__)) + '\\'
+package_directory = os.path.dirname(os.path.abspath(__file__)) + '/'
 
 def make_target(ra,dec,name):
     c = SkyCoord(ra,dec,unit=u.deg)
@@ -94,7 +94,7 @@ def make_schedule(date,telescope):
     print('ZAC:', date)
     
     print(package_directory + date)
-    targets = glob(package_directory + 'targets\\' + date + '\\*.json' )
+    targets = glob(package_directory + 'targets/' + date + '/*.json' )
     # print(targets)
     blocks = []
     print(targets)
@@ -147,7 +147,7 @@ def make_schedule(date,telescope):
 
     table = priority_schedule.to_table()
 
-    save_path = package_directory + 'obs_lists\\' + date + '\\'
+    save_path = package_directory + 'obs_lists/' + date + '/'
     make_dir(save_path)
 
     table = table.to_pandas()
