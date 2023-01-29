@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Jan 28 23:15:54 2023
+
+@author: porri
+"""
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -119,7 +126,6 @@ def make_look_list(name_priority,mag_priority):
     """
     date = get_today()
     date = str(date)
-    print('ZAC LOOK', date)
 
     save_path = package_directory + 'targets/' + date
 
