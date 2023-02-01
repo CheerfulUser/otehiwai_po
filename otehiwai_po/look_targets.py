@@ -67,7 +67,6 @@ def make_look_entries(look,readout=40,filters=['R']):
     key = list(look.keys())
     for j in range(len(look)):
         l = look.iloc[j]
-        print(l)
         rate_lim = rate_limit(l['Rate ("/min)'])
         exptime = rough_exptime(l['V Mag.'])
         if rate_lim < exptime:
@@ -132,8 +131,6 @@ def make_look_list(name_priority,mag_priority):
 
     look = scrub_look_targets()
     look = look_priority(look,names=name_priority,mag_priority=mag_priority)
-    print('!!!')
-    print(look['priority'])
     looks = make_look_entries(look)
     save_targs(looks,save_path + '/look.json')
 
