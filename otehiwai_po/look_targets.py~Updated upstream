@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Jan 28 23:15:54 2023
+
+@author: porri
+"""
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -58,9 +65,9 @@ def priority_time(priority):
 def make_look_entries(look,readout=40,filters=['R']):
     obs = []
     key = list(look.keys())
-<<<<<<< HEAD
     for j in range(len(look)):
         l = look.iloc[j]
+        print(l)
         rate_lim = rate_limit(l['Rate ("/min)'])
         exptime = rough_exptime(l['V Mag.'])
         if rate_lim < exptime:
@@ -77,33 +84,11 @@ def make_look_entries(look,readout=40,filters=['R']):
         total_time = priority_time(priority)
                 
         exptime = int(round_look_exposures(exptime))
-=======
-    for k in key:
-        ll = look[k]
-        for j in range(len(ll)):
-            l = ll.iloc[j]
-            rate_lim = rate_limit(l['Rate ("/min)'])
-            exptime = rough_exptime(l['V Mag.'])
-            if rate_lim < exptime:
-                m = '!!! exposure time is too long for rate!!! \n Rescaling: {}s -> {}s'.format(exptime,rate_lim)
-                print(m)
-                exptime = rate_lim
-            if 300 < exptime:
-                m = '!!! exposure time is too long for tracking!!! \n Rescaling: {}s -> {}s'.format(exptime,500)
-                print(m)
-                exptime = 300
-            ra,dec = format_coord(l['R.A.'],l['Dec.'])
-            name = l['Target Name'].replace(' ','_').replace('/','') + '_22S01'
-            priority = l['priority']
-            total_time = priority_time(priority)
-                    
-            exptime = int(round_look_exposures(exptime))
->>>>>>> d94c3f548888c26d9a9d25c7099f917916bfa830
 
-            for f in filters:
-                repeats = int(total_time / (exptime + readout))
-                ob = make_obs_entry(exptime,f,repeats,name,ra,dec,propid='2022S-01',priority=priority)
-                obs += [ob]
+        for f in filters:
+            repeats = int(total_time / (exptime + readout))
+            ob = make_obs_entry(exptime,f,repeats,name,ra,dec,propid='2022S-01',priority=priority)
+            obs += [ob]
     return obs    
             
 
@@ -122,14 +107,15 @@ def look_priority(look,names=None,mag_priority=[['22-19',3],['19-17',4],['17-15'
             ind = (looks['V Mag.'].values < f) & (looks['V Mag.'].values > b)
             looks['priority'].iloc[ind] = int(mag_priority[i][1])
 
+
     if names is not None:
         for i in range(len(names)):
             name = names[i]
             for j in range(len(looks)):
                 if name[0] in looks.iloc[j]['Target Name']:
                     looks['priority'].iloc[j] = int(name[1])
-    look['active'] = looks
-    return look
+    
+    return looks
 
 
 
@@ -146,6 +132,8 @@ def make_look_list(name_priority,mag_priority):
 
     look = scrub_look_targets()
     look = look_priority(look,names=name_priority,mag_priority=mag_priority)
+    print('!!!')
+    print(look['priority'])
     looks = make_look_entries(look)
     save_targs(looks,save_path + '/look.json')
 
