@@ -58,6 +58,7 @@ def priority_time(priority):
 def make_look_entries(look,readout=40,filters=['R']):
     obs = []
     key = list(look.keys())
+<<<<<<< HEAD
     for k in key:
         ll = look[k]
         for j in range(len(ll)):
@@ -78,6 +79,27 @@ def make_look_entries(look,readout=40,filters=['R']):
             total_time = priority_time(priority)
                     
             exptime = int(round_look_exposures(exptime))
+=======
+    for j in range(len(look)):
+        l = look.iloc[j]
+        print(l)
+        rate_lim = rate_limit(l['Rate ("/min)'])
+        exptime = rough_exptime(l['V Mag.'])
+        if rate_lim < exptime:
+            m = '!!! exposure time is too long for rate!!! \n Rescaling: {}s -> {}s'.format(exptime,rate_lim)
+            print(m)
+            exptime = rate_lim
+        if 300 < exptime:
+            m = '!!! exposure time is too long for tracking!!! \n Rescaling: {}s -> {}s'.format(exptime,500)
+            print(m)
+            exptime = 300
+        ra,dec = format_coord(l['R.A.'],l['Dec.'])
+        name = l['Target Name'].replace(' ','_').replace('/','') + '_22S01'
+        priority = l['priority']
+        total_time = priority_time(priority)
+                
+        exptime = int(round_look_exposures(exptime))
+>>>>>>> parent of 0ab9e20 (update)
 
             for f in filters:
                 repeats = int(total_time / (exptime + readout))
@@ -125,6 +147,8 @@ def make_look_list(name_priority,mag_priority):
 
     look = scrub_look_targets()
     look = look_priority(look,names=name_priority,mag_priority=mag_priority)
+    print('!!!')
+    print(look['priority'])
     looks = make_look_entries(look)
     save_targs(looks,save_path + '/look.json')
 
