@@ -87,7 +87,7 @@ def make_alt_plot(priority_schedule,save_path):
     plt.savefig(save_path+'alt_plot.pdf')
 
 
-def make_schedule(date, telescope):
+def make_schedule(telescope, date=None):
     if date is None:
         date = get_today() # Current local time date
     date = str(date)
