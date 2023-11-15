@@ -7,6 +7,7 @@ Created on Fri Nov 25 03:30:03 2022
 
 import json
 import os
+from datetime import datetime, timezone
 from glob import glob
 
 from astroplan import FixedTarget
@@ -100,6 +101,30 @@ def add_exposure_details_to_table(priority_schedule, table):
     return table
 
 
+def add_local_start_and_end_times(priority_schedule, table):
+    local_start_times = []
+    local_end_times = []
+    for slot in priority_schedule.slots:
+        if hasattr(slot.block, 'target'):
+            local_start_times.append(utc_to_local_datetime(slot.start.iso))
+            local_end_times.append(utc_to_local_datetime(slot.end.iso))
+        elif slot.block:
+            local_start_times.append(utc_to_local_datetime(slot.start.iso))
+            local_end_times.append(utc_to_local_datetime(slot.end.iso))
+
+    table.add_column(local_start_times, name='start time (local)', index=2)
+    table.add_column(local_end_times, name="end time (local)", index=4)
+    return table
+
+
+def utc_to_local_datetime(utc_datetime_str):
+    time_format = '%Y-%m-%d %H:%M:%S.%f'
+    utc_datetime = datetime.strptime(utc_datetime_str, time_format)
+    utc_datetime = utc_datetime.replace(tzinfo=timezone.utc)
+    local_datetime = utc_datetime.astimezone().strftime(time_format)
+    return local_datetime
+
+
 def make_schedule(telescope, date=None):
     if date is None:
         date = get_today()  # Current local time date
@@ -159,6 +184,7 @@ def make_schedule(telescope, date=None):
 
     table = priority_schedule.to_table()
     table = add_exposure_details_to_table(priority_schedule, table)
+    table = add_local_start_and_end_times(priority_schedule, table)
 
     save_path = package_directory + 'obs_lists/' + date + '/'
     make_dir(save_path)
