@@ -24,7 +24,7 @@ from astroplan.scheduling import PriorityScheduler
 from glob import glob
 import json 
 
-from utilly import *
+from utilly import make_dir, get_today
 # from datetime import date
 import os
 package_directory = os.path.dirname(os.path.abspath(__file__)) + '/'
@@ -82,14 +82,14 @@ def make_alt_plot(priority_schedule,save_path):
     # plot the schedule with the airmass of the targets
     plt.figure(figsize = (14,6))
     
-    plot_schedule_airmass(priority_schedule,show_night='True',use_local_tz=True)
+    plot_schedule_airmass(priority_schedule,show_night='True')
     plt.legend(loc = "upper right")
     plt.savefig(save_path+'alt_plot.pdf')
 
 
 def make_schedule(date,telescope):
     if date is None:
-        date = get_today()
+        date = get_today() # current local time date
     date = str(date)
     print('ZAC:', date)
     
@@ -123,17 +123,17 @@ def make_schedule(date,telescope):
 
     dat = '{y}-{m}-{d}'.format(y=date[0:4],m=date[4:6],d=date[6:8])
     noon_before = Time(dat + ' 06:00')
-    noon_after = Time(dat + ' 20:00')
+    noon_after = Time(dat + ' 20:00') # start and end of night in UTC, for current local date. May want to change to all UTC
 
+    # unused code:
+    # seq_scheduler = SequentialScheduler(constraints = global_constraints,
+    #                                 observer = observatory,
+    #                                 transitioner = transitioner)
+    # # Initialize a Schedule object, to contain the new schedule
+    # sequential_schedule = Schedule(noon_before, noon_after)
 
-    seq_scheduler = SequentialScheduler(constraints = global_constraints,
-                                    observer = observatory,
-                                    transitioner = transitioner)
-    # Initialize a Schedule object, to contain the new schedule
-    sequential_schedule = Schedule(noon_before, noon_after)
-
-    # Call the schedule with the observing blocks and schedule to schedule the blocks
-    seq_scheduler(blocks, sequential_schedule)
+    # # Call the schedule with the observing blocks and schedule to schedule the blocks
+    # seq_scheduler(blocks, sequential_schedule)
 
     prior_scheduler = PriorityScheduler(constraints = global_constraints,
                                     observer = observatory,

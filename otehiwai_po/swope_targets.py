@@ -38,9 +38,9 @@ def get_target_list():
     URL = "https://docs.google.com/spreadsheets/d/1UFuei-xAv3a5rdKUBIArvL8RI1Vp9Hk54JiDwtYpYnA/export?format=csv&gid=0"
     
     test = requests.get(URL)
-    open('swope.csv', 'wb').write(test.content)
+    open(package_directory + 'swope.csv', 'wb').write(test.content)
 
-    df = pd.read_csv('swope.csv')
+    df = pd.read_csv(package_directory + 'swope.csv')
     df = df.rename(columns={'Unnamed: 2':'name'})
     df = df.dropna(how='all')
 
