@@ -102,7 +102,7 @@ def add_exposure_details_to_table(priority_schedule, table):
 
 def make_schedule(telescope, date=None):
     if date is None:
-        date = get_today()  # Current local time date
+        date = get_today()  # Current UTC date 
     date = str(date)
 
     target_directory_filepath = f"{os.path.join(package_directory, 'targets', date, '')}*.json"

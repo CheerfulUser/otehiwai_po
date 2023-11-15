@@ -19,8 +19,8 @@ def make_dir(path):
         os.mkdir(path)
 
 def get_today():
-    from datetime import datetime
-    d = datetime.now()
+    from datetime import datetime, timezone
+    d = datetime.now(timezone.utc)
     date = f"{d.year:04.0f}{d.month:02.0f}{d.day:02.0f}"
     return date
 
