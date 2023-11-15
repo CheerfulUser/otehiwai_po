@@ -33,7 +33,7 @@ def save_targs(target_list, name):
         json.dump(target_list, fout, indent=2)
 
 
-def make_obs_entry(exptime, filt, repeats, obj, ra, dec, propid, magnitude, priority=1, exptype='object'):
+def make_obs_entry(exptime, filt, repeats, obj, ra, dec, propid, magnitude, rate="N/A", priority=1, exptype='object'):
     if isnan(float(magnitude)):
         magnitude = -9999
     obs = {
@@ -45,6 +45,7 @@ def make_obs_entry(exptime, filt, repeats, obj, ra, dec, propid, magnitude, prio
         "ra": ra,
         "dec": dec,
         "magnitude": int(float(magnitude)),
+        "rate": rate,
         "propid": propid,
         "priority": int(priority)
     }

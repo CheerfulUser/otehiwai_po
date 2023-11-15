@@ -41,9 +41,13 @@ def make_block(obj, readout):
     filt = obj['filter']
     priority = obj['priority']
     magnitude = obj['magnitude']
+    rate = obj['rate']
 
-    block = ObservingBlock.from_exposures(targ, priority, exp, repeats, read_out,
-                                          configuration={'filter': filt, 'magnitude': magnitude})
+    configuration = {'filter': filt, 'magnitude': magnitude}
+    if rate != "N/A":
+        configuration['rate ("/min)'] = rate
+
+    block = ObservingBlock.from_exposures(targ, priority, exp, repeats, read_out, configuration=configuration)
     return block
 
 
