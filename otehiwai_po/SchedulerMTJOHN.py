@@ -87,19 +87,17 @@ def make_alt_plot(priority_schedule,save_path):
     plt.savefig(save_path+'alt_plot.pdf')
 
 
-def make_schedule(date,telescope):
+def make_schedule(date, telescope):
     if date is None:
-        date = get_today() # current local time date
+        date = get_today() # Current local time date
     date = str(date)
-    print('ZAC:', date)
     
-    print(package_directory + date)
-    targets = glob(package_directory + 'targets/' + date + '/*.json' )
-    # print(targets)
+    targets_filepath = f"{os.path.join(package_directory, 'targets', date, '')}*.json"
+    # Glob order is system dependent, so we will sort here to ensure consistency
+    targets = sorted(glob(targets_filepath))
     blocks = []
-    print(targets)
+
     for target in targets:
-        print('!!!! ',target)
         targ = json.load(open(target))
         for ob in targ:
             if telescope.lower() == 'moa':
