@@ -77,12 +77,13 @@ def make_look_entries(look,readout=40,filters=['R']):
             name = l['Target Name'].replace(' ','_').replace('/','') + '_22S01'
             priority = l['priority']
             total_time = priority_time(priority)
+            magnitude = l['V Mag.']
                     
             exptime = int(round_look_exposures(exptime))
 
             for f in filters:
                 repeats = int(total_time / (exptime + readout))
-                ob = make_obs_entry(exptime,f,repeats,name,ra,dec,propid='2022S-01',priority=priority)
+                ob = make_obs_entry(exptime,f,repeats,name,ra,dec,propid='2022S-01',priority=priority, magnitude=magnitude)
                 obs += [ob]
     return obs    
             
