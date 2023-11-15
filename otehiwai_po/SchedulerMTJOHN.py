@@ -98,7 +98,8 @@ def make_schedule(telescope, date=None):
     blocks = []
 
     for target in targets:
-        targ = json.load(open(target))
+        with open(target, 'r') as file:
+            targ = json.load(file)
         for ob in targ:
             if telescope.lower() == 'moa':
                 blocks +=  [make_block(ob,priority=0,readout=80)]
