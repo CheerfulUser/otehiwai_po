@@ -61,7 +61,7 @@ def make_alt_plot(priority_schedule,save_path):
 
     # plot the schedule with the airmass of the targets
     plt.figure(figsize = (14,6))
-    plot_schedule_airmass(priority_schedule,show_night='True',use_local_tz=True)
+    plot_schedule_airmass(priority_schedule, show_night=True)
     plt.legend(loc = "upper right")
     plt.savefig(save_path+'alt_plot.pdf')
 
