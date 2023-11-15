@@ -34,7 +34,7 @@ def make_target(ra,dec,name):
     targ = FixedTarget(coord=c,name=name)
     return targ
 
-def make_block(obj,priority,readout):
+def make_block(obj, readout):
 
     read_out = readout * u.second
 
@@ -42,6 +42,7 @@ def make_block(obj,priority,readout):
     exp = obj['expTime'] * u.s
     repeats = obj['count']
     filt = obj['filter']
+    priority = obj['priority']
 
 
     block = ObservingBlock.from_exposures(targ, priority, exp, repeats, read_out,
@@ -82,7 +83,7 @@ def make_alt_plot(priority_schedule,save_path):
     # plot the schedule with the airmass of the targets
     plt.figure(figsize = (14,6))
     
-    plot_schedule_airmass(priority_schedule,show_night='True')
+    plot_schedule_airmass(priority_schedule, show_night=True)
     plt.legend(loc = "upper right")
     plt.savefig(save_path+'alt_plot.pdf')
 
@@ -92,19 +93,19 @@ def make_schedule(telescope, date=None):
         date = get_today() # Current local time date
     date = str(date)
     
-    targets_filepath = f"{os.path.join(package_directory, 'targets', date, '')}*.json"
+    target_directory_filepath = f"{os.path.join(package_directory, 'targets', date, '')}*.json"
     # Glob order is system dependent, so we will sort here to ensure consistency
-    targets = sorted(glob(targets_filepath))
+    target_filepaths = sorted(glob(target_directory_filepath))
     blocks = []
 
-    for target in targets:
-        with open(target, 'r') as file:
-            targ = json.load(file)
-        for ob in targ:
+    for target_filepath in target_filepaths:
+        with open(target_filepath, 'r') as file:
+            target_json = json.load(file)
+        for target in target_json:
             if telescope.lower() == 'moa':
-                blocks +=  [make_block(ob,priority=0,readout=80)]
+                blocks.append(make_block(target, readout=80))
             elif telescope.lower() == 'bc':
-                blocks +=  [make_block(ob,priority=0,readout=5)]
+                blocks.append(make_block(target, readout=5))
     
     observatory = Observer.at_site(site_name='MJO')
     global_constraints = [AirmassConstraint(max = 2.5, boolean_constraint = False),
