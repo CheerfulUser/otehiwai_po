@@ -40,9 +40,10 @@ def make_block(obj, readout):
     repeats = obj['count']
     filt = obj['filter']
     priority = obj['priority']
+    magnitude = obj['magnitude']
 
     block = ObservingBlock.from_exposures(targ, priority, exp, repeats, read_out,
-                                          configuration={'filter': filt})
+                                          configuration={'filter': filt, 'magnitude': magnitude})
     return block
 
 

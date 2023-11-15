@@ -68,8 +68,9 @@ def make_swope_entries(df,priority,exptime=180,readout=40,filters=['V']):
         dec = l.Dec
         print(l['name'])
         name = l['name'] + '_22S02'
+        magnitude = l['Disc. Mag.']
         for f in filters:
-            ob = make_obs_entry(exptime,f,repeats,name,ra,dec,propid='2022S-02',priority=priority)
+            ob = make_obs_entry(exptime,f,repeats,name,ra,dec,propid='2022S-02',priority=priority, magnitude=magnitude)
             obs += [ob]
     return obs    
 
