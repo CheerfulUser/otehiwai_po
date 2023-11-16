@@ -161,7 +161,7 @@ def make_schedule(telescope, date=None):
     dat = '{y}-{m}-{d}'.format(y=date[0:4], m=date[4:6], d=date[6:8])
     noon_before = Time(dat + ' 06:00')
     noon_after = Time(
-        dat + ' 20:00')  # start and end of night in UTC, for current local date. May want to change to all UTC
+        dat + ' 20:00')  # start and end of night in UTC, for current UTC date
 
     # unused code:
     # seq_scheduler = SequentialScheduler(constraints = global_constraints,

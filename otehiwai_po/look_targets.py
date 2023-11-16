@@ -5,7 +5,7 @@ from astropy.coordinates import SkyCoord
 import astropy.units as u
 from copy import deepcopy
 import os
-from utilly import *
+from utilly import save_targs, rough_exptime, make_obs_entry, get_today, make_dir
 
 
 package_directory = os.path.dirname(os.path.abspath(__file__)) + '/'

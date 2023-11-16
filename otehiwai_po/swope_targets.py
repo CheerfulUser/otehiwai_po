@@ -13,7 +13,7 @@ from astropy.coordinates import SkyCoord
 import astropy.units as u
 from copy import deepcopy
 import os
-from utilly import *
+from utilly import save_targs, make_obs_entry, make_dir, get_today
 import requests
 
 

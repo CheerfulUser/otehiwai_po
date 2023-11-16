@@ -9,6 +9,7 @@ Created on Tue Nov 29 04:47:48 2022
 from look_targets import make_look_list
 from debass_targets import make_debass_list
 from swope_targets import make_swope_list
+from custom_targets import make_custom_list
 from SchedulerMTJOHN import make_schedule
 import time
 
@@ -20,6 +21,10 @@ if __name__ == '__main__':
     make_look_list(name_priority=[['81P',1],['73P',1],['UN271',1]],mag_priority=[['22-19',3],['19-17',4],['17-15',5],['15-12',6]])
     # make_debass_list()
     make_swope_list()
+    
+    custom_targets = [{'name':'2021 S3','filter':'R','exptime':300,'repeats':1},
+                      {'name':'358P','filter':'R','exptime':300,'repeats':1}]
+    make_custom_list(custom_targets)
 
     make_schedule(telescope = 'moa')
     end = time.perf_counter()
