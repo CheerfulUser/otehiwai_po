@@ -1,0 +1,6 @@
+astroplan==0.9.1
+astropy==5.3.4
+lxml==4.9.3
+matplotlib==3.8.0
+pandas==2.1.1
+requests==2.31.0
