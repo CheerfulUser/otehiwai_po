@@ -1,40 +1,8 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Nov 16 04:03:40 2023
-
-@author: hopkinsm
-"""
-
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from astropy.coordinates import SkyCoord
-import astropy.units as u
-from copy import deepcopy
 import os
 from utilly import save_targs, get_today, make_dir, make_obs_entry
-import requests
 from astroquery.mpc import MPC
 
-package_directory = os.path.dirname(os.path.abspath(__file__)) + '/'
-
-# maybe use
-def make_custom_entries(df,priority,exptime=180,readout=40,filters=['V']):
-    obs = []
-    for j in range(len(df)):
-        l = df.iloc[j]
-        repeats = 1
-        ra = l.RA
-        dec = l.Dec
-        print(l['name'])
-        name = l['name'] + '_22S02'
-        magnitude = l['Disc. Mag.']
-        for f in filters:
-            ob = make_obs_entry(exptime,f,repeats,name,ra,dec,propid='2022S-02',priority=priority, magnitude=magnitude)
-            obs += [ob]
-    return obs    
-
+package_directory = os.path.dirname(os.path.abspath(__file__))
 
 def make_custom_entries(targets):
     """This largely copies make_look_entries. COme back and add bells and 
@@ -75,7 +43,7 @@ def make_custom_list(targets):
     """
     date = get_today()
 
-    save_path = package_directory + 'targets/' + date
+    save_path = os.path.join(package_directory,'targets',date)
 
     make_dir(save_path)
     

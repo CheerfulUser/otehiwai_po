@@ -8,7 +8,7 @@ import os
 from utilly import save_targs, rough_exptime, make_obs_entry, get_today, make_dir
 
 
-package_directory = os.path.dirname(os.path.abspath(__file__)) + '/'
+package_directory = os.path.dirname(os.path.abspath(__file__))
 
 
 def scrub_look_targets(maglim=22, dec_lim=15):
@@ -123,7 +123,7 @@ def make_look_list(name_priority,mag_priority):
     date = get_today()
     date = str(date)
 
-    save_path = package_directory + 'targets/' + date
+    save_path = os.path.join(package_directory, 'targets', date)
 
     make_dir(save_path)
 
@@ -131,7 +131,7 @@ def make_look_list(name_priority,mag_priority):
     look = look_priority(look,names=name_priority,mag_priority=mag_priority)
     print('!!!')
     looks = make_look_entries(look)
-    save_targs(looks,save_path + '/look.json')
+    save_targs(looks, os.path.join(save_path, 'look.json'))
 
     print('!!! Made LOOK target list for ' + date + ' !!!')
 
