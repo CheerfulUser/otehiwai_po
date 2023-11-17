@@ -63,7 +63,8 @@ def make_look_entries(look,readout=40,filters=['R']):
         print('!!!! ', ll)
         for j in range(len(ll)):
             l = ll.iloc[j]
-            rate_lim = rate_limit(l['Rate ("/min)'])
+            rate = l['Rate ("/min)']
+            rate_lim = rate_limit(rate)
             exptime = rough_exptime(l['V Mag.'])
             if rate_lim < exptime:
                 m = '!!! exposure time is too long for rate!!! \n Rescaling: {}s -> {}s'.format(exptime,rate_lim)
@@ -83,7 +84,8 @@ def make_look_entries(look,readout=40,filters=['R']):
 
             for f in filters:
                 repeats = int(total_time / (exptime + readout))
-                ob = make_obs_entry(exptime,f,repeats,name,ra,dec,propid='2022S-01',priority=priority, magnitude=magnitude)
+                ob = make_obs_entry(exptime,f,repeats,name,ra,dec,propid='2022S-01',priority=priority,
+                                    magnitude=magnitude, rate=rate)
                 obs += [ob]
     return obs    
             

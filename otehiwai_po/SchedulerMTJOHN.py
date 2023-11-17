@@ -41,9 +41,13 @@ def make_block(obj, readout):
     filt = obj['filter']
     priority = obj['priority']
     magnitude = obj['magnitude']
+    rate = obj['rate']
 
-    block = ObservingBlock.from_exposures(targ, priority, exp, repeats, read_out,
-                                          configuration={'filter': filt, 'magnitude': magnitude})
+    configuration = {'filter': filt, 'magnitude': magnitude}
+    if rate != "N/A":
+        configuration['rate ("/min)'] = rate
+
+    block = ObservingBlock.from_exposures(targ, priority, exp, repeats, read_out, configuration=configuration)
     return block
 
 
@@ -126,6 +130,22 @@ def utc_to_local_datetime(utc_datetime_str):
     return local_datetime
 
 
+def format_ra_and_dec(priority_schedule, table):
+    ra = []
+    dec = []
+    for slot in priority_schedule.slots:
+        if hasattr(slot.block, 'target'):
+            ra.append(slot.block.target.ra.to_string(u.hour))
+            dec.append(slot.block.target.dec.to_string(u.degree, alwayssign=True))
+        elif slot.block:
+            ra.append('')
+            dec.append('')
+
+    table['ra'] = ra
+    table['dec'] = dec
+    return table
+
+
 def make_schedule(telescope, date=None):
     if date is None:
         date = get_today()  # Current UTC date 
@@ -186,6 +206,7 @@ def make_schedule(telescope, date=None):
     table = priority_schedule.to_table()
     table = add_exposure_details_to_table(priority_schedule, table)
     table = add_local_start_and_end_times(priority_schedule, table)
+    table = format_ra_and_dec(priority_schedule, table)
 
     save_path = package_directory + 'obs_lists/' + date + '/'
     make_dir(save_path)
