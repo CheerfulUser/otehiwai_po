@@ -86,7 +86,7 @@ def make_alt_plot(priority_schedule, save_path):
 
     plot_schedule_airmass(priority_schedule, show_night=True)
     plt.legend(loc="upper right")
-    plt.savefig(save_path + 'alt_plot.pdf')
+    plt.savefig(os.path.join(save_path, 'alt_plot.pdf'))
 
 
 def add_exposure_details_to_table(priority_schedule, table):
