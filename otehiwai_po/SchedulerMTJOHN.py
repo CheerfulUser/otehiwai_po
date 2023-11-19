@@ -13,7 +13,7 @@ from glob import glob
 from astroplan import FixedTarget
 from astroplan import Observer
 from astroplan import ObservingBlock
-from astroplan.constraints import AtNightConstraint, AirmassConstraint
+from astroplan.constraints import AtNightConstraint, AirmassConstraint, MoonSeparationConstraint
 from astroplan.scheduling import PriorityScheduler
 from astroplan.scheduling import Schedule
 from astroplan.scheduling import Transitioner
@@ -167,7 +167,9 @@ def make_schedule(telescope, date=None):
 
     observatory = Observer.at_site(site_name='MJO')
     global_constraints = [AirmassConstraint(max=2.5, boolean_constraint=False),
-                          AtNightConstraint.twilight_civil()]
+                          AtNightConstraint.twilight_civil(),
+                          MoonSeparationConstraint(min=30 * u.deg, max=None)
+                          ]
     if telescope.lower() == 'moa':
         transitioner = MOA_transitioner()
         sched_path = 'MOA'
