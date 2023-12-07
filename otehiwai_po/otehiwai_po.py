@@ -14,16 +14,14 @@ import time
 
 
 if __name__ == '__main__':
-    start = time.time()
-    date=None
+    start = time.perf_counter()
     Tele =['moa', 'bc']
-    # T = 'moa'
     
     make_look_list(name_priority=[['81P',1],['73P',1],['UN271',1]],mag_priority=[['22-19',3],['19-17',4],['17-15',5],['15-12',6]])
-    #make_debass_list()
+    # make_debass_list()
     make_swope_list()
-    # for T in Tele:
-    make_schedule(date, telescope = 'moa')
-    end = time.time()
+
+    make_schedule(telescope = 'moa')
+    end = time.perf_counter()
     total_time = (end - start)/60
     print('Total Time to generate schedule:', "{0:0.2f}".format(total_time), 'minutes')
