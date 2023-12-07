@@ -13,11 +13,11 @@ from astropy.coordinates import SkyCoord
 import astropy.units as u
 from copy import deepcopy
 import os
-from utilly import *
+from utilly import save_targs, make_obs_entry, make_dir, get_today
 import requests
 
 
-package_directory = os.path.dirname(os.path.abspath(__file__)) + '/'
+package_directory = os.path.dirname(os.path.abspath(__file__))
 
 # def get_target_list():
 #     call = 'wget "https://docs.google.com/spreadsheets/d/1UFuei-xAv3a5rdKUBIArvL8RI1Vp9Hk54JiDwtYpYnA/export?format=csv&gid=0" -O "{}swope.csv"'.format(package_directory)
@@ -38,9 +38,9 @@ def get_target_list():
     URL = "https://docs.google.com/spreadsheets/d/1UFuei-xAv3a5rdKUBIArvL8RI1Vp9Hk54JiDwtYpYnA/export?format=csv&gid=0"
     
     test = requests.get(URL)
-    open(package_directory + 'swope.csv', 'wb').write(test.content)
+    open(os.path.join(package_directory, 'swope.csv'), 'wb').write(test.content)
 
-    df = pd.read_csv(package_directory + 'swope.csv')
+    df = pd.read_csv(os.path.join(package_directory, 'swope.csv'))
     df = df.rename(columns={'Unnamed: 2':'name'})
     df = df.dropna(how='all')
 
@@ -77,7 +77,7 @@ def make_swope_entries(df,priority,exptime=180,readout=40,filters=['V']):
 def make_swope_list():
     date = get_today()
 
-    save_path = package_directory + 'targets/' + date
+    save_path = os.path.join(package_directory, 'targets', date)
 
     make_dir(save_path)
     df = get_target_list()
@@ -87,7 +87,7 @@ def make_swope_list():
     for i in range(len(targs)):
         swope += make_swope_entries(targs[i],priorities[i])
 
-    save_targs(swope,save_path + '/swope.json')
+    save_targs(swope, os.path.join(save_path, 'swope.json'))
     print('!!! Made Swope target list for ' + date + ' !!!')
 
 

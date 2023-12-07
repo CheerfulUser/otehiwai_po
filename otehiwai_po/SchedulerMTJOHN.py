@@ -23,7 +23,7 @@ from astropy.time import Time
 
 from utilly import make_dir, get_today
 
-package_directory = os.path.dirname(os.path.abspath(__file__)) + '/'
+package_directory = os.path.dirname(os.path.abspath(__file__))
 
 
 def make_target(ra, dec, name):
@@ -86,7 +86,7 @@ def make_alt_plot(priority_schedule, save_path):
 
     plot_schedule_airmass(priority_schedule, show_night=True)
     plt.legend(loc="upper right")
-    plt.savefig(save_path + 'alt_plot.pdf')
+    plt.savefig(os.path.join(save_path, 'alt_plot.pdf'))
 
 
 def add_exposure_details_to_table(priority_schedule, table):
@@ -183,7 +183,7 @@ def make_schedule(telescope, date=None):
     dat = '{y}-{m}-{d}'.format(y=date[0:4], m=date[4:6], d=date[6:8])
     noon_before = Time(dat + ' 06:00')
     noon_after = Time(
-        dat + ' 20:00')  # start and end of night in UTC, for current local date. May want to change to all UTC
+        dat + ' 20:00')  # start and end of night in UTC, for current UTC date
 
     # unused code:
     # seq_scheduler = SequentialScheduler(constraints = global_constraints,
@@ -210,11 +210,11 @@ def make_schedule(telescope, date=None):
     table = add_local_start_and_end_times(priority_schedule, table)
     table = format_ra_and_dec(priority_schedule, table)
 
-    save_path = package_directory + 'obs_lists/' + date + '/'
+    save_path = os.path.join(package_directory, 'obs_lists', date)
     make_dir(save_path)
 
     table = table.to_pandas()
-    table.to_csv(save_path + 'schedule.csv', index=False)
+    table.to_csv(os.path.join(save_path, 'schedule.csv'), index=False)
 
     make_alt_plot(priority_schedule, save_path)
 
