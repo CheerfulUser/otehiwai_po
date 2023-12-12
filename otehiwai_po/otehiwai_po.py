@@ -30,7 +30,7 @@ if __name__ == '__main__':
                       {'name':'358P','filter':'R','exptime':300,'repeats':1}]
     make_custom_list(custom_targets)
 
-    make_schedule(telescope = 'moa')
+    make_schedule(telescope = 'bc')
     end = time.perf_counter()
     total_time = (end - start)/60
     print('Total Time to generate schedule:', "{0:0.2f}".format(total_time), 'minutes')
