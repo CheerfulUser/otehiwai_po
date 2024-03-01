@@ -5,10 +5,10 @@ from astropy.coordinates import SkyCoord
 import astropy.units as u
 from copy import deepcopy
 import os
-from utilly import *
+from utilly import save_targs, rough_exptime, make_obs_entry, get_today, make_dir
 
 
-package_directory = os.path.dirname(os.path.abspath(__file__)) + '/'
+package_directory = os.path.dirname(os.path.abspath(__file__))
 
 
 def scrub_look_targets(maglim=22, dec_lim=15):
@@ -63,7 +63,8 @@ def make_look_entries(look,readout=40,filters=['R']):
         print('!!!! ', ll)
         for j in range(len(ll)):
             l = ll.iloc[j]
-            rate_lim = rate_limit(l['Rate ("/min)'])
+            rate = l['Rate ("/min)']
+            rate_lim = rate_limit(rate)
             exptime = rough_exptime(l['V Mag.'])
             if rate_lim < exptime:
                 m = '!!! exposure time is too long for rate!!! \n Rescaling: {}s -> {}s'.format(exptime,rate_lim)
@@ -77,12 +78,14 @@ def make_look_entries(look,readout=40,filters=['R']):
             name = l['Target Name'].replace(' ','_').replace('/','') + '_22S01'
             priority = l['priority']
             total_time = priority_time(priority)
+            magnitude = l['V Mag.']
                     
             exptime = int(round_look_exposures(exptime))
 
             for f in filters:
                 repeats = int(total_time / (exptime + readout))
-                ob = make_obs_entry(exptime,f,repeats,name,ra,dec,propid='2022S-01',priority=priority)
+                ob = make_obs_entry(exptime,f,repeats,name,ra,dec,propid='2022S-01',priority=priority,
+                                    magnitude=magnitude, rate=rate)
                 obs += [ob]
     return obs    
             
@@ -120,7 +123,7 @@ def make_look_list(name_priority,mag_priority):
     date = get_today()
     date = str(date)
 
-    save_path = package_directory + 'targets/' + date
+    save_path = os.path.join(package_directory, 'targets', date)
 
     make_dir(save_path)
 
@@ -128,7 +131,7 @@ def make_look_list(name_priority,mag_priority):
     look = look_priority(look,names=name_priority,mag_priority=mag_priority)
     print('!!!')
     looks = make_look_entries(look)
-    save_targs(looks,save_path + '/look.json')
+    save_targs(looks, os.path.join(save_path, 'look.json'))
 
     print('!!! Made LOOK target list for ' + date + ' !!!')
 
