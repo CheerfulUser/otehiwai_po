@@ -1,0 +1,54 @@
+[
+  {
+    "count": 1,
+    "expType": "object",
+    "object": "2024adue",
+    "filter": "g",
+    "expTime": 300,
+    "ra": 35.58970833333333,
+    "dec": -27.171472222222224,
+    "magnitude": 20,
+    "rate": "N/A",
+    "propid": "",
+    "priority": 1
+  },
+  {
+    "count": 1,
+    "expType": "object",
+    "object": "2024adue",
+    "filter": "r",
+    "expTime": 300,
+    "ra": 35.58970833333333,
+    "dec": -27.171472222222224,
+    "magnitude": 20,
+    "rate": "N/A",
+    "propid": "",
+    "priority": 1
+  },
+  {
+    "count": 1,
+    "expType": "object",
+    "object": "2024adrf",
+    "filter": "g",
+    "expTime": 300,
+    "ra": 187.99022083333332,
+    "dec": 11.035688888888888,
+    "magnitude": 20,
+    "rate": "N/A",
+    "propid": "",
+    "priority": 1
+  },
+  {
+    "count": 1,
+    "expType": "object",
+    "object": "2024adrf",
+    "filter": "r",
+    "expTime": 300,
+    "ra": 187.99022083333332,
+    "dec": 11.035688888888888,
+    "magnitude": 20,
+    "rate": "N/A",
+    "propid": "",
+    "priority": 1
+  }
+]

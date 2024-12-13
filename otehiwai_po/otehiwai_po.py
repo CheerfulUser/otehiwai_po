@@ -26,11 +26,12 @@ if __name__ == '__main__':
     make_yse_list()
     # make_refsne_list()
     
-    custom_targets = [{'name':'2021 S3','filter':'R','exptime':300,'repeats':1},
-                      {'name':'358P','filter':'R','exptime':300,'repeats':1}]
+    custom_targets = [#{'name':'2021 S3','filter':'R','exptime':300,'repeats':1},
+                      #{'name':'358P','filter':'R','exptime':300,'repeats':1}
+                      ]
     make_custom_list(custom_targets)
 
-    make_schedule(telescope = 'moa')
+    make_schedule(telescope = 'bc')
     end = time.perf_counter()
     total_time = (end - start)/60
     print('Total Time to generate schedule:', "{0:0.2f}".format(total_time), 'minutes')
