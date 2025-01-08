@@ -20,7 +20,7 @@ if __name__ == '__main__':
     start = time.perf_counter()
     Tele =['moa', 'bc']
     
-    make_look_list(name_priority=[['81P',1],['73P',1],['UN271',1]],mag_priority=[['22-19',3],['19-17',4],['17-15',5],['15-12',6]])
+    make_look_list(name_priority=[['81P',6],['73P',6],['UN271',6]],mag_priority=[['22-19',3],['19-17',4],['17-15',5],['15-12',6]])
     # make_debass_list()
     # make_swope_list()
     make_yse_list()
