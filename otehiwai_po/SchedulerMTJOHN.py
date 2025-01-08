@@ -65,9 +65,9 @@ def MOA_transitioner(slew_rate=0.5, RV=180, I=240):
 def BC_transitioner(slew_rate=0.5, RV=3, I=3):
     slew_rate = slew_rate * u.deg / u.second  # need to measure
     transitioner = Transitioner(slew_rate,
-                                {'filter': {('R', 'V'): RV * u.second,
-                                            ('I', 'V'): I * u.second,
-                                            ('I', 'R'): I * u.second,
+                                {'filter': {('r', 'g'): RV * u.second,
+                                            ('i', 'g'): I * u.second,
+                                            ('i', 'r'): I * u.second,
                                             'default': 3 * u.second}})  # need to measure
 
     return transitioner

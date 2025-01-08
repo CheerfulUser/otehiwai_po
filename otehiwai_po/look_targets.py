@@ -55,7 +55,7 @@ def priority_time(priority):
         total_time = 5*60
     return total_time
 
-def make_look_entries(look,readout=40,filters=['R']):
+def make_look_entries(look,readout=40,filters=['g','r','i']):
     obs = []
     key = list(look.keys())
     for k in key[:1]:
